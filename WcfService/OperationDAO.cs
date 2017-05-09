@@ -7,17 +7,17 @@ namespace WcfService
 {
     public class OperationDAO
     {
-        private static List<ProprietaryClass> operations = new List<ProprietaryClass>();
+        private static List<Data> operations = new List<Data>();
 
-        public void Add(ProprietaryClass proprietaryClass)
+        public void Add(Data data)
         {
-            OperationDAO.operations.Add(proprietaryClass);
+            OperationDAO.operations.Add(data);
         }
 
-        public ProprietaryClass CurrentStatus(string operationName)
+        public Data CurrentStatus(string operationName)
         {
-            var result = OperationDAO.operations.Where(o => o.operation.Equals(operationName)).FirstOrDefault();
-            return (ProprietaryClass) result;
+            var result = OperationDAO.operations.Where(o => o.SoftwareVersion.Equals(operationName)).FirstOrDefault();
+            return (Data) result;
         }
     }
 }

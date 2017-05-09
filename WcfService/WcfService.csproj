@@ -63,11 +63,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data.cs" />
     <Compile Include="IOperationService.cs" />
     <Compile Include="OperationDAO.cs" />
     <Compile Include="OperationService.cs" />
+    <Compile Include="PartData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProprietaryClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

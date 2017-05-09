@@ -11,9 +11,9 @@ namespace WcfService
     public interface IOperationService
     {
         [OperationContract]
-        ProprietaryClass Search(string operationName);
+        Data Search(string operationName);
 
         [OperationContract]
-        void Add(ProprietaryClass operation);
+        void Add(Data operation);
     }
 }
