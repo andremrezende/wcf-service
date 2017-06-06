@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.ServiceModel;
-using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
-using WcfService;
+using System.ServiceModel;
+using System.ServiceModel.Description;
+using Poc2;
 
 namespace ConsoleApp1
 {
@@ -13,12 +13,15 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            ServiceHost host = new ServiceHost(typeof(OperationService));
-            Uri address = new Uri("http://localhost:8080/operations");
-            host.AddServiceEndpoint(typeof(IOperationService), new BasicHttpBinding(), address);
-            try {           
+            ServiceHost host = new ServiceHost(typeof(PocServer));
+            Uri endereco = new Uri("http://localhost:8080/poc2");
+
+            host.AddServiceEndpoint(typeof(IPocServer), new BasicHttpBinding(), endereco);
+
+            try
+            {
                 host.Open();
-                ShowServiceInfo(host);
+                ExibeInformacoesServico(host);
                 Console.ReadLine();
                 host.Close();
             }
@@ -28,15 +31,18 @@ namespace ConsoleApp1
                 Console.WriteLine(ex.Message);
                 Console.ReadLine();
             }
-        }
 
-        public static void ShowServiceInfo(ServiceHost sh)
+        }
+        public static void ExibeInformacoesServico(ServiceHost sh)
         {
             Console.WriteLine("{0} online", sh.Description.ServiceType);
-            foreach(ServiceEndpoint se in sh.Description.Endpoints)
+            foreach (ServiceEndpoint se in sh.Description.Endpoints)
             {
                 Console.WriteLine(se.Address);
             }
         }
+
     }
+    
+
 }
